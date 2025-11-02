@@ -13,6 +13,11 @@ export default function TabTwoScreen() {
     <Modal isVisible={visible}
      onBackdropPress={()=>setVisible(false)}
      onBackButtonPress={()=>setVisible(false)}
+     animationIn={'shake'}
+     animationOut={'flash'}
+     style={{
+      justifyContent:'center'
+     }}
       >
     <View style={{
       backgroundColor:"white",
