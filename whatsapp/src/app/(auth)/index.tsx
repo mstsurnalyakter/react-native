@@ -14,10 +14,13 @@ const Auth = () => {
   }
   const loading_timeout = () =>{
     setIsLoading(true)
-    setTimeout(navigate_to_welcome, 3000)
+  const timeoutId = setTimeout(navigate_to_welcome, 
+    3000)
+  return () => clearTimeout(timeoutId)
   }
   useEffect(()=>{
-    setTimeout(loading_timeout, 2000)
+   const timeoutId = setTimeout(loading_timeout, 2000)
+    return () => clearTimeout(timeoutId)
     
   },[])
 
@@ -25,7 +28,7 @@ const Auth = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Image src={imagePath.logo} style={styles.logo_style} resizeMode='contain' />
+        <Image source={imagePath.logo} style={styles.logo_style} resizeMode='contain' />
         <Text style={styles.whatsapp_text}>Whatsapp</Text>
       </View>
       <View style={styles.body}></View>
@@ -89,7 +92,8 @@ const styles = StyleSheet.create({
     color: "#867373",
         fontWeight:'bold',
         marginTop:verticalScale(15)
-  }
+  },
+
 })
 
 export default Auth
