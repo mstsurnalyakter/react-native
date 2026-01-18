@@ -3,16 +3,24 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import imagePath from '@/src/constants/imagePath'
+import ButtonComponent from '@/src/components/atoms/ButtonComponent'
+import { router } from 'expo-router'
 
 const TermAgree = () => {
+  const oneAgreeHandler = () => {
+    router.push('/(auth)/login')
+  }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.welcome_text}  >Welcome to Whatsapp</Text>
         <Image resizeMode='contain' style={styles.image_style} source={imagePath.welcome} />
-        <Text style={ }>
-          Read our Privacy Policy. Tap “Agree and continue” to accept the Teams of Service.
+        <Text style={styles.description_text }>
+          Read our <Text style={styles.link_text}>Privacy Policy.</Text> Tap “Agree and continue” to accept the <Text style={styles.link_text}>Terms of Service.</Text>
         </Text>
+        <View style={{width:moderateScale(300), marginTop: verticalScale(10)}}>
+          <ButtonComponent title="AGREE AND CONTINUE" onPress={oneAgreeHandler} />
+        </View>
 
       </View>
       <View style={styles.footer}>
@@ -65,9 +73,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: moderateScale(13),
     color: "black"
-
-   
+  },
+  link_text:{
+    color: "#0000FF"
   }
+
 })
 
 export default TermAgree
